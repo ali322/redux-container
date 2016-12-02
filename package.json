@@ -1,0 +1,32 @@
+{
+  "name": "redux-container",
+  "version": "1.0.0",
+  "description": "redux container for react component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ali322/redux-container.git"
+  },
+  "keywords": [
+    "redux",
+    "react"
+  ],
+  "author": "alichen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ali322/redux-container/issues"
+  },
+  "homepage": "https://github.com/ali322/redux-container#readme",
+  "dependencies": {
+    "react-redux": "^4.4.6",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": "^15.4.1",
+    "redux": "^3.6.0"
+  }
+}
