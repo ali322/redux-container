@@ -1,6 +1,6 @@
 {
   "name": "redux-container",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "redux container for react component",
   "main": "index.js",
   "scripts": {

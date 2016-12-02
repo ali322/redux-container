@@ -12,10 +12,11 @@ if(__DEV__ && typeof window !== "undefined"){
 
 const configureStore = compose(applyMiddleware(...middlewares))(createStore)
 
-export default function (rootReducer,initialState,actions,mapStateToProps=state=>state){
+export default function (rootReducer,initialState={},actions={},mapStateToProps=state=>state){
     return OriginalComponent=>{
         const store = configureStore(rootReducer,initialState)
         const mapActionToProps = dispatch=>({
+            dispatch,
             actions:bindActionCreators(actions,dispatch)
         })
         const ConnectedComponent = connect(mapStateToProps,mapActionToProps)(OriginalComponent)
