@@ -6,7 +6,9 @@ import createLogger from "redux-logger"
 
 let middlewares = [thunkMiddleware]
 
-if(__DEV__ && typeof window !== "undefined"){
+const isDev = typeof __DEV__ !== 'undefined' && __DEV__
+
+if(isDev && typeof window !== "undefined"){
     middlewares.push(createLogger())
 }
 
