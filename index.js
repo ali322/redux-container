@@ -24,9 +24,14 @@ export function connected(actions={},mapStateToProps=state=>state){
     }
 }
 
-export function wrapper(rootReducer,initialState,customStore){
+export function wrapper(params){
     return OriginalComponent=>{
-        const store = customStore || configureStore(rootReducer,initialState)
+        let store
+        if(typeof params.getState === 'function'){
+            store = params
+        }else{
+            store = configureStore(params.rootReducer,params.initialState)
+        }
         return class extends Component{
             render(){
                 return (
