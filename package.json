@@ -2,8 +2,14 @@
   "name": "redux-container",
   "version": "1.0.10",
   "description": "redux container for react component",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "jsnext:main": "es/index.js",
   "scripts": {
+    "clean": "rimraf dist es",
+    "build": "npm run build:commonjs && npm run build:es",
+    "prepublish": "npm run clean && npm run build",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel index.js --out-dir dist",
+    "build:es": "cross-env BABEL_ENV=es babel index.js --out-dir es",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +34,12 @@
   "peerDependencies": {
     "react": "^15.4.1",
     "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "cross-env": "^3.1.4",
+    "rimraf": "^2.5.4"
   }
 }
