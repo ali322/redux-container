@@ -12,7 +12,7 @@ if(isDev && typeof window !== "undefined"){
     middlewares.push(createLogger())
 }
 
-const configureStore = compose(applyMiddleware(...middlewares))(createStore)
+export const configureStore = compose(applyMiddleware(...middlewares))(createStore)
 
 export function connected(actions={},mapStateToProps=state=>state){
     return OriginalComponent=>{
@@ -24,9 +24,9 @@ export function connected(actions={},mapStateToProps=state=>state){
     }
 }
 
-export function wrapper(rootReducer,initialState){
+export function wrapper(rootReducer,initialState,customStore){
     return OriginalComponent=>{
-        const store = configureStore(rootReducer,initialState)
+        const store = customStore || configureStore(rootReducer,initialState)
         return class extends Component{
             render(){
                 return (
