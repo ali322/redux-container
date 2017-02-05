@@ -24,14 +24,8 @@ export function connected(actions={},mapStateToProps=state=>state){
     }
 }
 
-export function wrapper(params){
+export function wrapper(store){
     return OriginalComponent=>{
-        let store
-        if(typeof params.getState === 'function'){
-            store = params
-        }else{
-            store = configureStore(params.rootReducer,params.initialState)
-        }
         return class extends Component{
             render(){
                 return (
@@ -48,6 +42,6 @@ export default function (rootReducer,initialState={},actions={},mapStateToProps=
     return OriginalComponent=>{
         const store = configureStore(rootReducer,initialState)
         const ConnectedComponent = connected(actions,mapStateToProps)(OriginalComponent)
-        return wrapper(rootReducer,initialState)(ConnectedComponent)
+        return wrapper(store)(ConnectedComponent)
     }
 }
