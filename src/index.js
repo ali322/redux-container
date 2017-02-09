@@ -14,18 +14,8 @@ if (isDev) {
     middlewares.push(createLogger())
 }
 
-export function configureStore(rootReducer,initialState,reducerPath){
-    const _configureStore = compose(isDev ? composeWithDevTools(applyMiddleware(...middlewares)) :
+export const configureStore = compose(isDev ? composeWithDevTools(applyMiddleware(...middlewares)) :
         applyMiddleware(...middlewares))(createStore)
-    const store = _configureStore(rootReducer,initialState)
-    if(isDev && module.hot){
-        module.hot.accept(reducerPath, () => {
-            const nextRootReducer = require(reducerPath)
-            store.replaceReducer(nextRootReducer)
-        })
-    }
-    return store
-}
 
 export function connected(actions = {}, mapStateToProps = state => state) {
     return OriginalComponent => {
