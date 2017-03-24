@@ -29,7 +29,7 @@ export function connected(actions = {}, mapStateToProps = state => state) {
 
 export function wrapper(store) {
     return OriginalComponent => {
-        return class extends Component {
+        return class extends OriginalComponent {
             render() {
                 return (
                     <Provider store={store}>
