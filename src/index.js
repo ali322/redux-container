@@ -1,8 +1,7 @@
 import { Provider, connect } from "react-redux"
-import React, { Component } from "react"
+import React from "react"
 import { createStore, applyMiddleware, compose, bindActionCreators } from "redux"
 import thunkMiddleware from "redux-thunk"
-import createLogger from "redux-logger"
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 let middlewares = [thunkMiddleware]
@@ -10,9 +9,6 @@ let middlewares = [thunkMiddleware]
 const isDev = (typeof __DEV__ !== 'undefined' && __DEV__) ||
     (process.env.NODE_ENV !== 'production' && typeof window !== "undefined")
 
-if (isDev) {
-    middlewares.push(createLogger())
-}
 
 export const configureStore = compose(isDev ? composeWithDevTools(applyMiddleware(...middlewares)) :
         applyMiddleware(...middlewares))(createStore)
@@ -29,7 +25,7 @@ export function connected(actions = {}, mapStateToProps = state => state) {
 
 export function wrapper(store) {
     return OriginalComponent => {
-        return class extends OriginalComponent {
+        return class extends React.Component {
             render() {
                 return (
                     <Provider store={store}>
