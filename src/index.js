@@ -8,11 +8,11 @@ let middlewares = [thunkMiddleware]
 
 const isDev = (typeof __DEV__ !== 'undefined' && __DEV__) ||
     (process.env.NODE_ENV !== 'production' && typeof window !== "undefined")
-const port = process.env.REDUX_REMOTE_PORT || 9000
+const port = process.env.REDUX_REMOTE_PORT || 8000
 
-let composeEnhancers = composeWithDevTools({ realtime: !isDev, port })
+let composeEnhancers = composeWithDevTools({ realtime: !isDev })
 
-if(typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__){
+if (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
 }
 
