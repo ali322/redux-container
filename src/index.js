@@ -2,22 +2,15 @@ import { Provider, connect } from "react-redux"
 import React from "react"
 import { createStore, applyMiddleware, compose, bindActionCreators, combineReducers } from "redux"
 import thunkMiddleware from "redux-thunk"
-import { composeWithDevTools } from 'remote-redux-devtools'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 let middlewares = [thunkMiddleware]
 
 const isDev = (typeof __DEV__ !== 'undefined' && __DEV__) ||
     (process.env.NODE_ENV !== 'production' && typeof window !== "undefined")
-const port = process.env.REDUX_REMOTE_PORT || 5678
-
-let composeEnhancers = composeWithDevTools({ realtime: isDev, port });
-
-if (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
-}
 
 export const configureStore = (reducer, preloadState) => {
-    return createStore(reducer, preloadState, composeEnhancers(applyMiddleware(...middlewares)))
+    return createStore(reducer, preloadState, composeWithDevTools(applyMiddleware(...middlewares)))
 }
 
 export function connected(mapStateToProps = state => state, actions = {}) {
