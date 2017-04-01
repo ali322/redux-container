@@ -25,14 +25,12 @@ export function connected(mapStateToProps = state => state, actions = {}) {
 
 export function wrapper(store) {
     return Component => {
-        return class extends React.Component {
-            render() {
-                return (
-                    <Provider store={store}>
-                    <Component {...this.props}/>
-                    </Provider>
-                )
-            }
+        return props => {
+            return (
+                <Provider store={store}>
+                <Component {...props}/>
+                </Provider>
+            )
         }
     }
 }

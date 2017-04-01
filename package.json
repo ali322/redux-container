@@ -1,6 +1,6 @@
 {
   "name": "redux-container",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "redux container for react component",
   "main": "dist/index.js",
   "jsnext:main": "es/index.js",
