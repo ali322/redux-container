@@ -1,6 +1,6 @@
 {
   "name": "redux-container",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "redux container for react component",
   "main": "dist/index.js",
   "jsnext:main": "es/index.js",
@@ -37,7 +37,7 @@
     "redux-thunk": "^2.1.0"
   },
   "peerDependencies": {
-    "react": "^15.4.1",
+    "react": "*",
     "redux": "^3.6.0"
   },
   "devDependencies": {

@@ -9,8 +9,8 @@ let middlewares = [thunkMiddleware]
 const isDev = (typeof __DEV__ !== 'undefined' && __DEV__) ||
     (process.env.NODE_ENV !== 'production' && typeof window !== "undefined")
 
-export const configureStore = (reducer, preloadState) => {
-    return createStore(reducer, preloadState, composeWithDevTools(applyMiddleware(...middlewares)))
+export const configureStore = (reducer, preloadState, moreMiddlewares = []) => {
+    return createStore(reducer, preloadState, composeWithDevTools(applyMiddleware(...middlewares.concat(moreMiddlewares))))
 }
 
 export function connected(mapStateToProps = state => state, actions = {}) {
