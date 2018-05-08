@@ -1,6 +1,6 @@
 {
   "name": "redux-container",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "redux container for react component",
   "main": "dist/index.js",
   "jsnext:main": "es/index.js",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-latest": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.22.0",
     "cross-env": "^3.1.4",
     "rimraf": "^2.5.4"
